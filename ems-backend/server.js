@@ -8,6 +8,7 @@ const protocolRoutes = require("./src/routes/protocols");
 const medicationRoutes = require("./src/routes/medications");
 const relationshipRoutes = require("./src/routes/relationships");
 const medicationDoseRoutes = require("./src/routes/medicationDoses");
+const aiRoutes = require("./src/routes/ai");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -25,7 +26,9 @@ app.get('/health', (req, res) => {
     endpoints: {
       departments: '/api/departments',
       protocols: '/api/protocols',
-      medications: '/api/medications'
+      medications: '/api/medications',
+      'medication-doses': '/api/medication-doses',
+      ai: '/api/ai'
     }
   });
 });
@@ -36,6 +39,7 @@ app.use("/api/protocols", protocolRoutes);
 app.use("/api/medications", medicationRoutes);
 app.use("/api/relationships", relationshipRoutes);
 app.use("/api/medication-doses", medicationDoseRoutes);
+app.use("/api/ai", aiRoutes);
 
 // 404 handler
 app.use((req, res) => {
@@ -55,4 +59,5 @@ app.listen(PORT, () => {
   console.log(
     `💉 Medication Doses API: http://localhost:${PORT}/api/medication-doses`
   );
+  console.log(`🤖 AI Query API: http://localhost:${PORT}/api/ai`);
 });
