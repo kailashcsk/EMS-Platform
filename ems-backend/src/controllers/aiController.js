@@ -110,6 +110,37 @@ class AIController {
       });
     }
   }
+  
+  // Process natural language query with document parsing
+  async processQueryWithDocuments(req, res) {
+    try {
+      const { query } = req.body;
+
+      if (!query || typeof query !== "string") {
+        return res.status(400).json({
+          success: false,
+          error: "Query is required and must be a string",
+        });
+      }
+
+      if (query.length > 500) {
+        return res.status(400).json({
+          success: false,
+          error: "Query too long. Please keep queries under 500 characters.",
+        });
+      }
+
+      const result = await aiService.processQueryWithDocuments(query);
+      res.json(result);
+    } catch (error) {
+      console.error("Error in AI controller with documents:", error);
+      res.status(500).json({
+        success: false,
+        error: "Failed to process query with documents",
+        details: error.message,
+      });
+    }
+  }
 }
 
 module.exports = new AIController();
