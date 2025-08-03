@@ -4,6 +4,7 @@ require("dotenv").config();
 
 // Import routes
 const departmentRoutes = require("./src/routes/departments");
+const protocolRoutes = require("./src/routes/protocols");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use("/api/protocols", protocolRoutes);
 
 // Health check
 app.get("/health", (req, res) => {
@@ -29,4 +31,5 @@ app.listen(PORT, () => {
   console.log(`🚀 EMS Backend Server running on port ${PORT}`);
   console.log(`🏥 Health check: http://localhost:${PORT}/health`);
   console.log(`📊 Departments API: http://localhost:${PORT}/api/departments`);
+  console.log(`📄 Protocols API: http://localhost:${PORT}/api/protocols`);
 });
