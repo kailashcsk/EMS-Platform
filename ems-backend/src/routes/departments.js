@@ -1,20 +1,29 @@
 const express = require("express");
 const router = express.Router();
 const departmentController = require("../controllers/departmentController");
+const {
+  authenticateToken,
+  requireWritePermission,
+} = require("../middleware/auth");
 
 // GET /api/departments - Get all departments
-router.get("/", departmentController.getAllDepartments);
+router.get("/", authenticateToken, departmentController.getAllDepartments);
 
 // GET /api/departments/:id - Get department by ID
-router.get("/:id", departmentController.getDepartmentById);
+router.get("/:id", authenticateToken, departmentController.getDepartmentById);
 
 // POST /api/departments - Create new department
-router.post("/", departmentController.createDepartment);
+router.post(
+  "/",
+  authenticateToken,
+  requireWritePermission,
+  departmentController.createDepartment
+);
 
 // PUT /api/departments/:id - Update department
-router.put("/:id", departmentController.updateDepartment);
+router.put("/:id", authenticateToken, requireWritePermission, departmentController.updateDepartment);
 
 // DELETE /api/departments/:id - Delete department
-router.delete('/:id', departmentController.deleteDepartment);
+router.delete('/:id', authenticateToken, requireWritePermission, departmentController.deleteDepartment);
 
 module.exports = router;

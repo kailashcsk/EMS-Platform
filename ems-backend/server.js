@@ -9,6 +9,7 @@ const medicationRoutes = require("./src/routes/medications");
 const relationshipRoutes = require("./src/routes/relationships");
 const medicationDoseRoutes = require("./src/routes/medicationDoses");
 const aiRoutes = require("./src/routes/ai");
+const adminRoutes = require("./src/routes/admin");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -40,6 +41,7 @@ app.use("/api/medications", medicationRoutes);
 app.use("/api/relationships", relationshipRoutes);
 app.use("/api/medication-doses", medicationDoseRoutes);
 app.use("/api/ai", aiRoutes);
+app.use("/api/admin", adminRoutes);
 
 // 404 handler
 app.use((req, res) => {
