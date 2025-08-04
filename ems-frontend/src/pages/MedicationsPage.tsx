@@ -388,7 +388,7 @@ const MedicationsPage: React.FC = () => {
             <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
               <div className="flex-1">
                 <Label htmlFor="search">Search Medications</Label>
-                <div className="relative">
+                <div className="relative mt-2">
                   <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="search"
@@ -401,7 +401,7 @@ const MedicationsPage: React.FC = () => {
               </div>
 
               <div className="w-full md:w-64">
-                <Label htmlFor="department-filter">Filter by Department</Label>
+                <Label htmlFor="department-filter" className="mb-2">Filter by Department</Label>
                 <Select
                   value={selectedDepartment}
                   onValueChange={setSelectedDepartment}

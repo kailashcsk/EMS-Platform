@@ -97,7 +97,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </SheetContent>
             </Sheet>
 
-            <Link to="/dashboard" className="flex items-center space-x-2">
+            <Link to="/dashboard" className="flex items-center space-x-2 ml-5">
               <Activity className="h-6 w-6 text-primary" />
               <span className="text-lg font-bold hidden sm:block">
                 EMS Data Portal
@@ -147,11 +147,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     </p>
                   </div>
                 </div>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="cursor-pointer">
-                  <User className="mr-2 h-4 w-4" />
-                  <span>Profile</span>
-                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   className="cursor-pointer text-destructive"
